@@ -7,7 +7,7 @@
    @if($flash=Session::get('exito'))
     <h1>Listado de Solicitudes</h1>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{ $flash }} </strong> 
+    <strong>felicidades</strong> {{ $flash }} 
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   @endif
@@ -15,35 +15,34 @@
 
 @section('content')
 
-<a href="solicitud/create" class="btn btn-primary mb-3">CREAR</a>
-{{--$nombre_aplicativo[0] -> $nombre_de_aplicativo--}}
-<table id="solicitud" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<a href="usuario/create" class="btn btn-primary mb-3">CREAR</a>
+<table id="usuario" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
-
-            <th scope="col">Tipo de aplicativos</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Responsable movistar</th>
-            <th scope="col">Tipo de Requerimiento</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Email</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-         @foreach  ($solicitudes as $solicitud)
+         @foreach  ($usuarios as $usuario)
          <tr>
-            
-              <td>{{ $solicitud->tipo_de_aplicativos }}</td>
-              <td>{{ $solicitud->descripcion }}</td>
-              <td>{{ $solicitud->responsable_movistar }}</td>
-              <td>{{ $solicitud->tipo_de_requerimiento }}-{{ $solicitud->registro_rq }}</td>
-             
-             <td>
-                  <form action="{{ route ('solicitud.destroy',$solicitud->id)}}" method="POST">
-                  <a href="/solicitud/{{ $solicitud->id }}/edit" class="btn btn-info">Editar</a>
+              <td>{{ $usuario->id }}</td>
+              <td>{{ $usuario->name }}</td>
+              <td>{{ $usuario->lastname }}</td>
+              <td>{{ $usuario->cedula }}</td>
+              <td>{{ $usuario->rol }}</td>
+              <td>{{ $usuario->email }}</td>
+                 {{--<form action="{{ route ('usuario.destroy',$usuario->id)}}" method="POST">
+                  <a href="/usuario/{{ $usuario->id }}/edit" class="btn btn-info">Editar</a>
                   @csrf 
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Borrar</button>
-                  </form>
+                  </form>--}}
                </td> 
          </tr>
          @endforeach

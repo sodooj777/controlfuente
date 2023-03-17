@@ -13,8 +13,8 @@ class AdministracionController extends Controller
      */
     public function index()
     {   
-        $administracion = Administracion::all();
-        return view('administracion.index')->with('administracion',$administracion);
+        $administraciones = Administracion::all();
+        return view('administracion.index')->with('administraciones',$administraciones);
     }
 
     /**
@@ -30,17 +30,16 @@ class AdministracionController extends Controller
      */
     public function store(Request $request)
     {
-        $administracion = new Administracion();
+        $administraciones = new Administracion();
 
-        $administracion->proveedor = $request->get('proveedor');
-        $administracion->tipo_de_recurso = $request->get('tipo_de_recurso');
-        $administracion->gerencia = $request->get('gerencia');
-        $administracion->supervisor = $request->get('supervisor');
-        $administracion->sufijo = $request->get('sufijo');
-        $administracion->cargo = $request->get('cargo');
-        $administracion->op_id = $request->get('op_id');
+        $administraciones->proveedor = $request->get('proveedor');
+        $administraciones->gerencia = $request->get('gerencia');
+        $administraciones->supervisor = $request->get('supervisor');
+        $administraciones->sufijo = $request->get('sufijo');
+        $administraciones->cargo = $request->get('cargo');
+        $administraciones->op_id = $request->get('op_id');
 
-        $administracion->save();
+        $administraciones->save();
 
         return redirect('/administracion');
     }
@@ -58,7 +57,8 @@ class AdministracionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $administracion= Administracion::find($id);
+        return view('administracion.edit')->with('administracion',$administracion);
     }
 
     /**
@@ -66,7 +66,18 @@ class AdministracionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $administracion = Administracion::find($id);
+        $administracion->proveedor = $request->get('proveedor');
+        $administracion->tipo_de_recurso = $request->get('tipo_de_recurso');
+        $administracion->gerencia = $request->get('gerencia');
+        $administracion->supervisor = $request->get('supervisor');
+        $administracion->sufijo = $request->get('sufijo');
+        $administracion->cargo = $request->get('cargo');
+        $administracion->op_id = $request->get('op_id');
+
+        $administracion->save();
+
+        return redirect('/administracion');
     }
 
     /**
@@ -74,6 +85,8 @@ class AdministracionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $administracion = Administracion::find($id);
+        $administracion->delete();
+        return redirect('/administracion');
     }
 }

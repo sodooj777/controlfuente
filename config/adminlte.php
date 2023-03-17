@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Administrador</b>LTE',
+    'logo' => '<b>Administrador</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -302,10 +302,7 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+     
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -314,7 +311,7 @@ return [
         [
             'text'        => 'Solicitud',
             'url'         => 'solicitud',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas solid fa-business-time',
             'label'       => 'release',
             'label_color' => 'warning',
         ],
@@ -322,11 +319,16 @@ return [
         [
             'text' => 'Perfil de Usuarios',
             'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Administracion usuarios  ',
+            'url'  => 'administracion',
+            'icon' => 'fas sharp fa-solid fa-users',
+        ],
+        [
+            'text' => 'consulta de usuarios',
+            'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

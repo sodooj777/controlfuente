@@ -31,6 +31,8 @@ Route::resource('release','App\Http\Controllers\ReleaseController');
 
 Route::resource('administracion','App\Http\Controllers\AdministracionController');
 
+Route::resource('usuarios','App\Http\Controllers\UsuariosController');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

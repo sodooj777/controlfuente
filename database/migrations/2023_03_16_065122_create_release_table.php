@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('release', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('año');
+            $table->string('estatus');
+            $table->unsignedBigInteger('id_solicitud'); 
+            $table->foreign("id_solicitud")->references("id")->on("solicitud");
+           /* $table->unsignedBigInteger('id_aplicativo'); 
+            $table->foreign("id_aplicativo")->references("id")->on("aplicativo");*/
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('cedula');
             $table->string('rol'); //smallInteger
+            $table->string('tipo_de_recurso');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

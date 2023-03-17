@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administracion', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('edicion', function (Blueprint $table) {
+                 $table->bigIncrements('id');
            /* $table->timestamp('fecha_de_inicio');*/
             $table->string('proveedor');
-            $table->string('tipo_de_recurso');
             $table->string('gerencia');
             $table->string('supervisor');
             $table->string('sufijo');
             $table->string('cargo');
             $table->string('op_id');
            /* $table->unsignedBigInteger('id_users'); 
-            $table->foreign("id_users")->references("id")->on("users");  */          
+            $table->foreign("id_users")->references("id")->on("users");  */    
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administracion');
+        Schema::dropIfExists('edicion');
     }
 };

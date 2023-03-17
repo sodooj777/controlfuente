@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Solicitud;
 use App\Models\Aplicativos;
+use App\Models\Release;
 /*use App\Lib\Solicitud_mostrar;*/
 use Illuminate\Support\Facades\DB;
 
@@ -61,19 +62,38 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {   
-        
+        /* 
        
         
         $solicitudes = new Solicitud();
 
         $solicitudes->id_aplicativos= $request->get('id_aplicativos');
         $solicitudes->descripcion = $request->get('descripcion');
+        
         $solicitudes->responsable_movistar = $request->get('responsable_movistar');
         $solicitudes->tipo_de_requerimiento = $request->get('tipo_de_requerimiento');
-        $solicitudes->registro_rq = $request->get('registro_rq'); 
+        $solicitudes->registro_rq = $request->get('registro_rq');  */
                
-        $solicitudes->save();
-        session()->flash('exito','el release fue creada exitoxamente');
+        $response = Solicitud::create(['id_aplicativos'=> $request->get('id_aplicativos'),
+        'descripcion' => $request->get('descripcion'),'responsable_movistar' => $request->get('responsable_movistar'), 
+        'tipo_de_requerimiento'=> $request->get('tipo_de_requerimiento'), 'registro_rq'=> $request->get('registro_rq')]);
+    
+        $release = new Release();
+        $release ->id_solicitud = $response->id;
+        $release ->estatus = 'reservado';
+        $release ->año = $response->created_at;
+        
+
+        $nombre_aplicativo = DB::table('solicitud')
+        ->select('aplicativos.tipo_de_aplicativos')
+        ->join('aplicativos', 'aplicativos.id', '=', 'solicitud.id_aplicativos')
+        ->where('solicitud.id_aplicativos','=',  $response->id_aplicativos)
+        ->get()->first();
+
+        $release  ->save();
+        session()->flash('exito','el release fue creada exitoxamente bajo el numero ' . 'RL_' . $nombre_aplicativo->tipo_de_aplicativos . '_' .  '2023' . $response->id);
+
+
         return redirect('/solicitud');
     }
 
@@ -89,9 +109,10 @@ class SolicitudController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
+    {  
+        $solicitudes = Aplicativos::find($id);
         $solicitud= Solicitud::find($id);
-        return view('solicitud.edit')->with('solicitud',$solicitud);
+        return view('solicitud.edit')->with('solicitud',$solicitud)->with('solicitudes',$solicitudes);
     }
 
     /**
@@ -100,14 +121,17 @@ class SolicitudController extends Controller
     public function update(Request $request, string $id)
     {
         $solicitud = Solicitud::find($id);
-        $solicitud->tipo_de_aplicativos = $request->get('id_aplicativos');
         $solicitud->descripcion = $request->get('descripcion');
-        $solicitud->responsable_movistar = $request->get('responsable_movistar');
-        $solicitud->tipo_de_requerimiento = $request->get('tipo_de_requerimiento');
-        $solicitud->registro_rq = $request->get('registro_rq'); 
+        
+        $releasebd = DB::table('release')
+        ->where('id_solicitud','=',$id)        
+        ->update(['estatus' => $request->get('estatus')]);
+
+       
+
+
 
         $solicitud->save();
-
         return redirect('/solicitud');
     }
 

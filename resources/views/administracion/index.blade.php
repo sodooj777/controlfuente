@@ -19,28 +19,30 @@
             <th scope="col">Supervisor</th>
             <th scope="col">Sufijo</th>
             <th scope="col">Cargo</th>
+            <th scope="col">Codigo</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-         @foreach  ($administracion as $releases)
+         @foreach  ($administraciones as $administracion)
          <tr>
-              <td>{{ $releases->id }}</td>
-              <td>{{ $releases->proveedor }}</td>
-              <td>{{ $releases->tipo_de_recurso }}</td>
-              <td>{{ $releases->gerencia }}</td>
-              <td>{{ $releases->supervisor }}</td>
-              <td>{{ $releases->sufijo }}</td>
-              <td>{{ $releases->cargo }}</td>
-              <td>{{ $releases->op_id }}</td>
+              <td>{{ $administracion->id }}</td>
+              <td>{{ $administracion->proveedor }}</td>
+              <td>{{ $administracion->tipo_de_recurso }}</td>
+              <td>{{ $administracion->gerencia }}</td>
+              <td>{{ $administracion->supervisor }}</td>
+              <td>{{ $administracion->sufijo }}</td>
+              <td>{{ $administracion->cargo }}</td>
+              <td>{{ $administracion->op_id }}</td>
              
             <td>
-                  {{--<form action="{{ route ('administracion.destroy',$administracion->id)}}" method="POST">
+                  <form action="{{ route ('administracion.destroy',$administracion->id)}}" method="POST">
                   <a href="/administracion/{{ $administracion->id }}/edit" class="btn btn-info">Editar</a>
                   @csrf 
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Borrar</button>
-                  </form>--}}
+                  </form>
+                 
                </td> 
          </tr>
          @endforeach

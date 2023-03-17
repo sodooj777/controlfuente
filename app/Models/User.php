@@ -28,6 +28,7 @@ class User extends Authenticatable
         'lastname',
         'cedula',
         'rol',
+        'tipo_de_recurso',
         'email',
         'password',
         

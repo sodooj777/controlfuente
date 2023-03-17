@@ -37,6 +37,18 @@
             </select>
             </div>
 
+           <div>
+            <x-label for="tipo_de_recurso" value="{{ __('Tipo de recursos') }}" />
+            <select  class="block mt-1 w-full" type="text" name="tipo_de_recurso">
+                
+                <option>------Seleccionar------</option>
+            
+                <option value="EXTERNO" >EXTERNO</option>
+                <option value="INTERNO">INTERNO</option>
+            
+            </select>    
+            </div>
+
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />

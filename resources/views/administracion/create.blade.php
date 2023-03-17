@@ -9,6 +9,7 @@
 @section('content')
 <form action="/administracion" method="POST">
     @csrf
+    
      <div class="col-md-6">
         <label for="">Prooveedor</label>
         <select name="proveedor" id="proveedor" class="form-select" aria-label="Default select example">
@@ -27,7 +28,7 @@
              <option value="TELEFONICA VENEZUELA">TELEFONICA VENEZUELA</option>
         </select>    
     </div> 
-    <div class="col-md-6">
+  {{--<div class="col-md-6">
         <label for="">Tipo de Recurso</label>
         <select name="tipo_de_recurso" id="tipo_de_recurso" class="form-select" aria-label="Default select example">
             
@@ -37,7 +38,7 @@
              <option value="INTERNO">INTERNO</option>
           
         </select>    
-    </div> 
+    </div>--}} 
    
     <div class="col-md-6">
         <label for="">Gerencia</label>
@@ -45,16 +46,16 @@
             
             <option>------Seleccionar------</option>
            
-             <option value="WO" >Gerencia de Configuracion e Integracion</option>
-             <option value="INC">Gerencia de Procesos y Productos</option>
-             <option value="PRY">Gerencia de Pruebas Integrales y Certificacion</option>
-             <option value="RQ">Gerencia Desarrollo de Sistemas Soporte Operacion</option>
-             <option value="RQ">Gerencia Desarrollo e Implementacion Sistemas Backend</option>
-             <option value="RQ">Gerencia Desarrollo e Implementacion Sistemas Cliente Final</option>
-             <option value="RQ">Gerencia Desarrollo e implementacion Sistemas Empresariales</option>
-             <option value="RQ">Gerencia Desarrollo e Implementacion Sistemas Front-End</option>
-             <option value="RQ">Gerencias Desarrollo e Implementacion Sistemas Informacion</option>
-             <option value="RQ">Gerencia Soporte Tecnico Aplicaciones</option>
+             <option value="Gerencia de Configuracion e Integracion" >Gerencia de Configuracion e Integracion</option>
+             <option value="Gerencia de Procesos y Productos">Gerencia de Procesos y Productos</option>
+             <option value="Gerencia de Pruebas Integrales y Certificacion">Gerencia de Pruebas Integrales y Certificacion</option>
+             <option value="Gerencia Desarrollo de Sistemas Soporte Operacion">Gerencia Desarrollo de Sistemas Soporte Operacion</option>
+             <option value="Gerencia Desarrollo e Implementacion Sistemas Backend">Gerencia Desarrollo e Implementacion Sistemas Backend</option>
+             <option value="Gerencia Desarrollo e Implementacion Sistemas Cliente Final">Gerencia Desarrollo e Implementacion Sistemas Cliente Final</option>
+             <option value="Gerencia Desarrollo e implementacion Sistemas Empresariales">Gerencia Desarrollo e implementacion Sistemas Empresariales</option>
+             <option value="Gerencia Desarrollo e Implementacion Sistemas Front-End">Gerencia Desarrollo e Implementacion Sistemas Front-End</option>
+             <option value="Gerencias Desarrollo e Implementacion Sistemas Informacion">Gerencias Desarrollo e Implementacion Sistemas Informacion</option>
+             <option value="Gerencia Soporte Tecnico Aplicaciones">Gerencia Soporte Tecnico Aplicaciones</option>
         </select>    
     </div> 
     <div class="col-md-6">
@@ -63,23 +64,23 @@
             
             <option selected>------Seleccionar------</option>
            
-             <option value="WO" >ANA CHACON</option>
-             <option value="INC">CARMEN GOMEZ</option>
-             <option value="WO" >DANIELO JAIME</option>
-             <option value="INC">ELIECER RUSSIAN</option>
-             <option value="WO" >FRANKLIN BALLESTEROS</option>
-             <option value="INC">GABRIELA SANCHEZ</option>
-             <option value="WO" >GLORIANA AGUIRRE</option>
-             <option value="INC">GRISBEL LEON</option>
-             <option value="WO" >GUSTAVO HOENICKA</option>
-             <option value="INC">HENRY HUMBERTO GARCIA MENDOZA</option>
-             <option value="WO" >JAVIER LEON</option>
-             <option value="INC">JUAN LUIS RODRIGUEZ</option>
-             <option value="INC">LESTER MENDOZA</option>
-             <option value="INC">MARCIAL MARTINEZ</option>
-             <option value="INC">MARIA CHACON</option>
-             <option value="INC">ROSA AGUERA</option>
-             <option value="INC">SOTITIOS XANTHOULIS</option>
+             <option value="ANA CHACON" >ANA CHACON</option>
+             <option value="CARMEN GOMEZ">CARMEN GOMEZ</option>
+             <option value="DANIELO JAIME" >DANIELO JAIME</option>
+             <option value="ELIECER RUSSIAN">ELIECER RUSSIAN</option>
+             <option value="FRANKLIN BALLESTEROS" >FRANKLIN BALLESTEROS</option>
+             <option value="GABRIELA SANCHEZ">GABRIELA SANCHEZ</option>
+             <option value="GLORIANA AGUIRRE" >GLORIANA AGUIRRE</option>
+             <option value="GRISBEL LEON">GRISBEL LEON</option>
+             <option value="GUSTAVO HOENICKA" >GUSTAVO HOENICKA</option>
+             <option value="HENRY HUMBERTO GARCIA MENDOZA">HENRY HUMBERTO GARCIA MENDOZA</option>
+             <option value="JAVIER LEON" >JAVIER LEON</option>
+             <option value="JUAN LUIS RODRIGUEZ">JUAN LUIS RODRIGUEZ</option>
+             <option value="LESTER MENDOZA">LESTER MENDOZA</option>
+             <option value="MARCIAL MARTINEZ">MARCIAL MARTINEZ</option>
+             <option value="MARIA CHACON">MARIA CHACON</option>
+             <option value="ROSA AGUERA">ROSA AGUERA</option>
+             <option value="SOTITIOS XANTHOULIS">SOTITIOS XANTHOULIS</option>
         </select>    
     </div> 
     <div class="col-sm-6">
@@ -98,6 +99,8 @@
     <a href="/administracion" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 
+    
+
 </form>
 @stop
 
@@ -107,4 +110,5 @@
 @stop
 
 @section('js')
+
 @stop
