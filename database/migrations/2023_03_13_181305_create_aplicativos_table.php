@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('aplicativos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo_de_aplicativos'); 
+            $table->string('aplicacion');
+            $table->string('tipo_de_aplicativos');
+           
+ 
         });
     }
 

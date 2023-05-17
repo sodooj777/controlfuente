@@ -34,7 +34,7 @@
   </div>
 </form>
 
-<form class="row g-3" action="{{ route('search.index')}}" method="GET">
+<form class="row g-3" action="{{ route('desarrollo.index')}}" method="GET">
 @csrf
 
     <div class="col-md-6">
@@ -60,9 +60,7 @@
             <th scope="col">Release</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Responsable movistar</th>
-            <th scope="col">Fecha de creacion</th>
             <th scope="col">Tipo de Requerimiento</th>
-            <th scope="col">Estatus</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -83,12 +81,11 @@
              @endif
               <td>{{ $solicitud->descripcion }}</td>
               <td>{{ $solicitud->responsable_movistar }}</td>
-              <td>{{ $solicitud->año }}</td>
               <td>{{ $solicitud->tipo_de_requerimiento }}-{{ $solicitud->registro_rq }}</td>
-              <td>{{ $solicitud->estatus }}</td>
+             
              <td>
                   <form action="{{ route ('solicitud.destroy',$solicitud->id)}}" method="POST">
-                  <a href="/solicitud/{{ $solicitud->id }}/edit" class="btn btn-info">Editar</a>
+                  <a href="/desarrollo/{{ $solicitud->id }}/edit" class="btn btn-info">Editar</a>
                   @csrf 
                   @method('DELETE')
                   <button type="submit" class="btn btn-primary">Consultar</button>

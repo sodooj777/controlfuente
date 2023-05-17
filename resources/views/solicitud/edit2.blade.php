@@ -10,6 +10,12 @@
 <form action="/solicitud/{{$solicitud->id}}" method="POST">
     @csrf
     @method('PUT')
+
+   {{--<div class="mb-3">
+        <label for="" class="form-label">ID</label>
+        <input id="id" name="id_solicitud" disabled="true" type="text" class="form-control" value="{{ $solicitu->id_solicitud }}">
+    </div>--}} 
+
     @if($solic->tipo_de_recurso == 'EXTERNO') 
     <div class="mb-3">
         <label for="" class="form-label">Nombre de release</label>
@@ -21,44 +27,16 @@
         <input id="aplicacion" name="aplicacion" disabled="true" type="text" class="form-control" value="RL_{{ $solicitudes->aplicacion }}_2023{{--date($solicitu->año)--}}{{$solicitu->id_solicitud}}">
     </div>
     @endif
+ 
     <div class="mb-3">
         <label for="" class="form-label" >Descripcion</label>
-        <input id="descripcion" name="descripcion"   type="text" type="text" class="form-control" value="{{ $solicitud->descripcion }}">
+        <input id="descripcion" name="descripcion" disabled="true"  type="text" type="text" class="form-control" value="{{ $solicitud->descripcion }}">
     </div>
-    <div class="col-md-4">
-        <label for="" class="form-select" >Estado</label>
-        <select name="estatus"  id="estatus"  class="form-control">
-            
-            <option>{{ $solicitu->estatus }}</option>
-            @if($solicitu->estatus=="Abierto")
-            <option value="Cerrado">Cerrado</option>
-            <option value="Suspendido">Suspendido</option>
-            
-            @endif
-            @if($solicitu->estatus=="Suspendido")
-            <option value="Cerrado">Cerrado</option>
-            <option value="Abierto" >Abierto</option>
-            
-            @endif
-            @if($solicitu->estatus=="Reservado")
-            <option value="Cerrado">Cerrado</option>
-            <option value="Abierto" >Abierto</option>
-            <option value="Suspendido">Suspendido</option>
-            @endif
-            @if($solicitu->estatus=="Cerrado")
-             <option value="Abierto" >Abierto</option>
-             <option value="Suspendido">Suspendido</option>
-           
-            @endif
-            @if($solicitu->estatus=="reservado")
-            <option value="Cerrado">Cerrado</option>
-            <option value="Abierto" >Abierto</option>
-            <option value="Suspendido">Suspendido</option>
-         
-            @endif
-           
-        </select>    
-    </div> 
+  
+    <div class="mb-3">
+        <label for="" class="form-label" >Estatus</label>
+        <input id="estatus" name="estatus"  disabled="true" type="text" type="text" class="form-control" value="{{ $solicitu->estatus }}">
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">Responsable movistar</label>
         <input id="responsable_movistar"  name="responsable_movistar" disabled="true" type="text" class="form-control" value="{{ $solicitud->responsable_movistar }}">
@@ -71,8 +49,8 @@
   
 
     
-    <a href="/solicitud" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <a href="/solicitud" class="btn btn-secondary" tabindex="5">Regresar</a>
+   
 
 </form>
 @stop

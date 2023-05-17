@@ -29,6 +29,7 @@ class User extends Authenticatable
         'cedula',
         'rol',
         'tipo_de_recurso',
+        'gerencia',
         'email',
         'password',
         

@@ -15,6 +15,7 @@ class Solicitud extends Model
     'descripcion',
     'responsable_movistar',
     'tipo_de_requerimiento',
+    'id_users',
     'registro_rq'
    ];
 }

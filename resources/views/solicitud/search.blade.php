@@ -16,39 +16,21 @@
 @section('content')
 
 <a href="solicitud/create" class="btn btn-primary mb-3">CREAR</a>
-@if(!$texto)
-<a href="/excel" class="btn btn-success mb-3"><i class="fas solid fa-file-export"></i>Generar Reportes</a>
-@endif
-@if($texto)
-<a href="/excel1?texto={{ $texto }}" class="btn btn-success mb-3"><i class="fas solid fa-file-export"></i>Generar Reportes</a>
-@endif
+
+<a href="/excel2?_token={{$_GET['_token']}}&f1={{$_GET['f1']}}&f2={{$_GET['f2']}}" class="btn btn-success mb-3"><i class="fas solid fa-file-export"></i>Generar Reportes</a>
+
 {{--$nombre_aplicativo[0] -> $nombre_de_aplicativo--}}
-<form  action="{{ route('solicitud.index')}}" method="GET">
-  <div class="form-row">
-    <div class="col-sm-4 my-1">
-        <input type="text" class="form-control" name="texto" value="{{ $texto }}">
-    </div>   
-        <div class="col-sm-4 my-1">
-        <input type="submit" class="btn btn-primary" value="Buscar">
-    </div> 
-  </div>
-</form>
-
-<form class="row g-3" action="{{ route('search.index')}}" method="GET">
+<form action="{{ route('search.index')}}" method="GET">
 @csrf
-
-    <div class="col-md-6">
-        <label for="f1" class="form-label">Fecha Inicio</label>
-        <input  type="date"  class="form-control" name="f1" id="f1" value="{{ $f1 }}"/>
-    </div>    
-    <div class="col-md-6">
-        <label for="f2" class="form-label">Fecha Fin</label>
-        <input  type="date"  class="form-control" name="f2" id="f2" value="{{ $f2 }}"/>
-    </div>
-    <div class="d-grid gap-2 col-3 mx-auto">
-       <button type="submit" class="btn btn-info btn-sm">Filtrar</button>
-    </div>
-
+<div class="col mt-2">
+    <label for="f1" class="form-label">Fecha Inicio</label>
+    <input  type="date"  class="form-control" name="f1" id="f1" value="{{ $f1 }}"/>
+</div>    
+<div class="col mt-2">
+    <label for="f2" class="form-label">Fecha Fin</label>
+    <input  type="date"  class="form-control" name="f2" id="f2" value="{{ $f2 }}"/>
+</div> 
+<button type="submit" class="btn btn-info btn-sm">Filtrar</button>
 </form>
 
 
@@ -60,19 +42,11 @@
             <th scope="col">Release</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Responsable movistar</th>
-            <th scope="col">Fecha de creacion</th>
             <th scope="col">Tipo de Requerimiento</th>
-            <th scope="col">Estatus</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-    
-    @if(count($solicitudes)<=0)    
-        <tr> 
-            <td colspan="8">No hay resultados</td>
-        </tr>
-    @else    
          @foreach  ($solicitudes as $solicitud)
          <tr>
               <td>{{ $solicitud->id }}</td>
@@ -83,9 +57,8 @@
              @endif
               <td>{{ $solicitud->descripcion }}</td>
               <td>{{ $solicitud->responsable_movistar }}</td>
-              <td>{{ $solicitud->año }}</td>
               <td>{{ $solicitud->tipo_de_requerimiento }}-{{ $solicitud->registro_rq }}</td>
-              <td>{{ $solicitud->estatus }}</td>
+             
              <td>
                   <form action="{{ route ('solicitud.destroy',$solicitud->id)}}" method="POST">
                   <a href="/solicitud/{{ $solicitud->id }}/edit" class="btn btn-info">Editar</a>
@@ -96,14 +69,9 @@
                </td> 
          </tr>
          @endforeach
-         @endif
-        
     </tbody>            
 </table>
 
-<div class="card-footer mr-auto">
-    {{ $solicitudes->links() }}
-</div>  
 @stop
 
 @section('css')

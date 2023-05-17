@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('tipo_de_requerimiento');
             $table->string('registro_rq');
             $table->unsignedBigInteger('id_aplicativos');
-            $table->foreign("id_aplicativos")->references("id")->on("aplicativos");            
+            $table->foreign("id_aplicativos")->references("id")->on("aplicativos");  
+            $table->unsignedBigInteger('id_users');
+            $table->foreign("id_users")->references("id")->on("users");           
             $table->timestamps();
         });
     }

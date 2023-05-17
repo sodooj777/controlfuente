@@ -25,7 +25,7 @@
             <th scope="col">Cedula</th>
             <th scope="col">Rol</th>
             <th scope="col">Email</th>
-            <th scope="col">Acciones</th>
+           
         </tr>
     </thead>
     <tbody>

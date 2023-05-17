@@ -7,47 +7,6 @@
 @stop
 
 @section('content')
-<a href="administracion/create" class="btn btn-primary mb-3">CREAR</a>
-
-<table id="administracion" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
-    <thead class="bg-primary text-white">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Proveedor</th>
-            <th scope="col">Tipo de recurso</th>
-            <th scope="col">Gerencia</th>
-            <th scope="col">Supervisor</th>
-            <th scope="col">Sufijo</th>
-            <th scope="col">Cargo</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-         @foreach  ($administraciones as $administracion)
-         <tr>
-              <td>{{ $administracion->id }}</td>
-              <td>{{ $administracion->proveedor }}</td>
-              <td>{{ $administracion->tipo_de_recurso }}</td>
-              <td>{{ $administracion->gerencia }}</td>
-              <td>{{ $administracion->supervisor }}</td>
-              <td>{{ $administracion->sufijo }}</td>
-              <td>{{ $administracion->cargo }}</td>
-              <td>{{ $administracion->op_id }}</td>
-             
-            <td>
-                  <form action="{{ route ('administracion.destroy',$administracion->id)}}" method="POST">
-                  <a href="/administracion/{{ $administracion->id }}/edit" class="btn btn-info">Editar</a>
-                  @csrf 
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Borrar</button>
-                  </form>
-                 
-               </td> 
-         </tr>
-         @endforeach
-    </tbody>            
-</table>
 
 @stop
 

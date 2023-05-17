@@ -3,7 +3,7 @@
 @section('title', 'CRUD con Laravel')
 
 @section('content_header')
- <h2>Editar Solicitud</h2>
+ <h2>Crear Solicitud</h2>
 @stop
 
 
@@ -113,7 +113,7 @@
     </div>--}}
     <div class="col-md-4">
         <label for="" class="form-select">Tipo de Requerimiento</label>
-        <select name="tipo_de_requerimiento" id="tipo_de_requerimiento" class="col-md-4" >
+        <select name="tipo_de_requerimiento" id="tipo_de_requerimiento"  class="form-control" >
             
             <option>------Seleccionar------</option>
            
@@ -123,22 +123,23 @@
              <option value="RQ">Requerimiento</option>
         </select>    
     </div> 
+    <br>
     <div id="showWO" class="myDiv">
     <label for="" class="form-label"><strong>"0000009999999"</strong></label>
-    <input id="registro_rqWO" name="" type="number" class="form-control"  />
+    <input id="registro_rqWO" name="" type="text" class="form-control"  />
 </div>
 
 <div id="showINC" class="myDiv">
     <label for="" class="form-label"><strong>"9999999"</strong></label>
-    <input id="registro_rqINC" name="" type="number" class="form-control"  />
+    <input id="registro_rqINC" name="" type="text" class="form-control"  />
 </div>
 <div id="showPRY" class="myDiv">
 	<label for="" class="form-label"><strong>"VE99XXYYYYY99/9999-999-99_9"</strong></label>
-    <input id="registro_rqPRY" name="" type="number" class="form-control"  />
+    <input id="registro_rqPRY" name="" type="text" class="form-control"  />
 </div> 
 <div id="showRQ" class="myDiv">
 	<label for="" class="form-label"><strong>"00000000099999_99"</strong></label>
-    <input id="registro_rqRQ" name="" type="number" class="form-control"  />
+    <input id="registro_rqRQ" name="" type="text" class="form-control"  />
 </div>
    <input id="registro_rq" name="registro_rq" type="hidden" class="form-control"  />
     <a href="/solicitud" class="btn btn-secondary" tabindex="5">Cancelar</a>
